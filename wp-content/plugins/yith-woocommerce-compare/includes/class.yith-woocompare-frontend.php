@@ -373,7 +373,7 @@ if ( ! class_exists( 'YITH_Woocompare_Frontend' ) ) {
 							break;
 						case 'description':
 							$description               = apply_filters( 'woocommerce_short_description', $product->get_short_description() );
-							$product->fields[ $field ] = apply_filters( 'yith_woocompare_products_description', $description );
+							$product->fields[ $field ] = apply_filters( 'yith_woocompare_products_description', $description, $product );
 							break;
 						case 'stock':
 							$availability = $product->get_availability();
