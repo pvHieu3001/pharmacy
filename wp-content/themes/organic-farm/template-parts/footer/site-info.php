@@ -14,7 +14,7 @@
 		printf(
 			/* translators: %s: Organic Farm WordPress Theme. */
 			esc_html__( ' %s ', 'organic-farm' ),
-			'<a target="_blank" href="' . esc_url( 'https://www.ovationthemes.com/wordpress/free-organic-wordpress-theme/') . '"> Organic Farm WordPress Theme</a>'
+			'<a target="_blank" href="' . esc_url( 'https://www.ovationthemes.com/wordpress/free-organic-wordpress-theme/') . '"></a>'
 		);
 	?>
 </div>
