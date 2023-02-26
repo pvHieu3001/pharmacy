@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 /**
  * Displays footer site info
  *
@@ -17,4 +17,4 @@
  			'<a target="_blank" href="' . esc_url( 'https://www.ovationthemes.com/wordpress/free-organic-wordpress-theme/') . '"></a>'
 		);
  	?>
- </div> -->
+ </div>
