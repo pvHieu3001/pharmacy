@@ -1,6 +1,6 @@
 <?php
 // [blog_posts]
-function shortcode_latest_from_blog($atts, $content = null, $tag) {
+function shortcode_latest_from_blog($atts, $content = null, $tag = '' ) {
 
 	extract(shortcode_atts(array(
 		"_id" => 'row-'.rand(),
@@ -39,6 +39,7 @@ function shortcode_latest_from_blog($atts, $content = null, $tag) {
 		'offset' => '',
 		'orderby' => 'date',
 		'order' => 'DESC',
+		'tags' => '',
 
 		// Read more
 		'readmore' => '',
@@ -156,6 +157,7 @@ function shortcode_latest_from_blog($atts, $content = null, $tag) {
 	$repeater['slider_nav_color'] = $slider_nav_color;
 	$repeater['slider_bullets'] = $slider_bullets;
     $repeater['auto_slide'] = $auto_slide;
+	$repeater['infinitive'] = $infinitive;
 	$repeater['row_spacing'] = $col_spacing;
 	$repeater['row_width'] = $width;
 	$repeater['columns'] = $columns;
@@ -169,6 +171,7 @@ function shortcode_latest_from_blog($atts, $content = null, $tag) {
 		'post_type' => 'post',
 		'offset' => $offset,
 		'cat' => $cat,
+		'tag__in' => $tags ? array_filter( array_map( 'trim', explode( ',', $tags ) ) ) : '',
 		'posts_per_page' => $posts,
 		'ignore_sticky_posts' => true,
 		'orderby'             => $orderby,
@@ -196,6 +199,11 @@ function shortcode_latest_from_blog($atts, $content = null, $tag) {
 			'posts_per_page' => 9999,
 			'ignore_sticky_posts' => true,
 		);
+
+		// Include for search archive listing.
+		if ( is_search() ) {
+			$args['post_type'][] = 'page';
+		}
 	}
 
 $recentPosts = new WP_Query( $args );
@@ -227,8 +235,7 @@ while ( $recentPosts->have_posts() ) : $recentPosts->the_post();
 	        if($grid[$current]['size'] == 'thumbnail') $show_excerpt = 'false';
 	    }
 
-		?>
-		<div class="col <?php echo implode(' ', $col_class); ?>" <?php echo $animate;?>>
+		?><div class="col <?php echo implode(' ', $col_class); ?>" <?php echo $animate;?>>
 			<div class="col-inner">
 			<a href="<?php the_permalink() ?>" class="plain">
 				<div class="box <?php echo $classes_box; ?> box-blog-post has-hover">
@@ -306,8 +313,7 @@ while ( $recentPosts->have_posts() ) : $recentPosts->the_post();
 				</div>
 				</a>
 			</div>
-		</div>
-<?php endwhile;
+		</div><?php endwhile;
 wp_reset_query();
 
 // Get repeater end.

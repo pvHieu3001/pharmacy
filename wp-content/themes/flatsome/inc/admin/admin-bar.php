@@ -30,21 +30,21 @@ $wp_admin_bar->add_menu( array(
 $wp_admin_bar->add_menu( array(
  'id' => 'theme_options',
  'parent' => 'flatsome_panel',
- 'title' => '<span class="dashicons dashicons-admin-generic" style="'.$icon_style.'"></span> Theme Options',
+ 'title' => '<span class="dashicons dashicons-admin-generic" style="'.$icon_style.'"></span>Theme Options',
  'href' => $optionUrl_panel
 ));
 
 $wp_admin_bar->add_menu( array(
  'parent' => 'flatsome_panel',
  'id' => 'options_advanced',
- 'title' => '<span class="dashicons dashicons-admin-tools" style="'.$icon_style.'"></span> Advanced',
+ 'title' => '<span class="dashicons dashicons-admin-tools" style="'.$icon_style.'"></span>Advanced',
  'href' =>  $advanced_url.''
 ));
 
 $wp_admin_bar->add_menu( array(
  'parent' => 'flatsome_panel',
  'id' => 'flatsome_panel_license',
- 'title' => 'Theme License',
+ 'title' => 'Theme Registration',
  'href' => $panel_url
 ));
 
@@ -55,13 +55,12 @@ $wp_admin_bar->add_menu( array(
  'href' => $panel_url.'-support'
 ));
 
-/*
-$wp_admin_bar->add_menu( array(
- 'parent' => 'flatsome_panel',
- 'id' => 'flatsome_panel_plugins',
- 'title' => 'Plugins',
- 'href' => $panel_url.'-plugins'
-)); */
+	$wp_admin_bar->add_menu( array(
+		'parent' => 'flatsome_panel',
+		'id'     => 'flatsome_panel_status',
+		'title'  => 'Status',
+		'href'   => $panel_url . '-status',
+	) );
 
 $wp_admin_bar->add_menu( array(
  'parent' => 'flatsome_panel',
@@ -475,6 +474,13 @@ $wp_admin_bar->add_menu( array(
  'id' => 'options_advanced_integrations',
  'title' => 'Integrations',
  'href' =>  $advanced_url.'of-option-integrations'
+));
+
+$wp_admin_bar->add_menu( array(
+ 'parent' => 'options_advanced',
+ 'id' => 'options_advanced_updates',
+ 'title' => 'Updates',
+ 'href' =>  $advanced_url.'of-option-updates'
 ));
 
 $wp_admin_bar->add_menu( array(

@@ -1,3 +1,12 @@
+<?php
+/**
+ * Category layout with left sidebar.
+ *
+ * @package          Flatsome/WooCommerce/Templates
+ * @flatsome-version 3.16.0
+ */
+
+?>
 <div class="row category-page-row">
 
 		<div class="col large-3 hide-for-medium <?php flatsome_sidebar_classes(); ?>">
@@ -38,7 +47,7 @@
 
 		<?php
 
-		if ( fl_woocommerce_version_check( '3.4.0' ) ? woocommerce_product_loop() : have_posts() ) {
+		if ( woocommerce_product_loop() ) {
 
 			/**
 			 * Hook: woocommerce_before_shop_loop.

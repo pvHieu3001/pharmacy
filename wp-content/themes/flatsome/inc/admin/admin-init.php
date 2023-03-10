@@ -7,7 +7,6 @@
  */
 
 
-
 /**
  * Theme Panel
  */
@@ -17,7 +16,9 @@ require get_template_directory() . '/inc/admin/panel/panel.php';
 // Add Advanced Options
 if (!is_customize_preview()  && is_admin() ) {
   require get_template_directory() . '/inc/admin/envato_setup/envato_setup.php';
+  require get_template_directory() . '/inc/admin/classes/class-status.php';
   require get_template_directory() . '/inc/admin/advanced/index.php';
+  require get_template_directory() . '/inc/admin/backend/menu/class-menu.php';
 }
 
 // Add Admin Bar helper
@@ -27,10 +28,6 @@ if ( is_admin_bar_showing() ) {
 
 // Add Notices
 require get_template_directory() . '/inc/admin/admin-notice.php';
-
-// Include Kirki.
-require_once dirname( __FILE__ ) . '/kirki-config.php';
-require_once dirname( __FILE__ ) . '/kirki/kirki.php';
 
 // Add Options
 if(is_customize_preview()){
@@ -54,7 +51,6 @@ if(is_customize_preview()){
   include_once(dirname( __FILE__ ).'/options/pages/options-pages.php');
   include_once(dirname( __FILE__ ).'/options/styles/options-colors.php');
   include_once(dirname( __FILE__ ).'/options/styles/options-global.php');
-  include_once(dirname( __FILE__ ).'/options/styles/options-type.php');
   include_once(dirname( __FILE__ ).'/options/styles/options-css.php');
   include_once(dirname( __FILE__ ).'/options/styles/options-lightbox.php');
   include_once(dirname( __FILE__ ).'/options/notifications/options-notifications.php');

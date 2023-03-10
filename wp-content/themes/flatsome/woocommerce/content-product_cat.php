@@ -10,10 +10,19 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     http://docs.woothemes.com/document/template-structure/
- * @author  WooThemes
- * @package WooCommerce/Templates
- * @version 2.6.1
+ * @see              http://docs.woothemes.com/document/template-structure/
+ * @author           WooThemes
+ * @package          WooCommerce/Templates
+ * @version          4.7.0
+ * @flatsome-version 3.16.0
+ */
+
+/**
+ * Old template used for lower then WC 4.7.0
+ * New template file is renamed to content-product-cat.php
+ *
+ * While the old template is still BC, the versioning in
+ * WC status does not work for this template.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

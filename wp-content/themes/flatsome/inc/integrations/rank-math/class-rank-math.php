@@ -3,16 +3,18 @@
  * Rank Math integration
  *
  * @author      UX Themes
- * @package     Flatsome/Integrations
+ * @package     Flatsome\Integrations
  * @since       3.12.0
  */
 
-namespace Flatsome\Inc\Integrations;
+namespace Flatsome\Integrations;
+
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Class Rank_Math
  *
- * @package Flatsome\Inc\Integrations
+ * @package Flatsome\Integrations
  */
 class Rank_Math {
 
@@ -26,7 +28,7 @@ class Rank_Math {
 	/**
 	 * Rank_Math constructor.
 	 */
-	public function __construct() {
+	private function __construct() {
 		add_action( 'wp', [ $this, 'integrate' ] );
 	}
 

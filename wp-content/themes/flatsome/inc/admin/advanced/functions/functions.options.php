@@ -174,7 +174,7 @@ if ( ! function_exists( 'of_options' ) ) {
 			'type' => 'checkbox',
 			'id'   => 'jquery_migrate',
 			'std'  => 0,
-			'desc' => 'Remove jQuery Migrate. Most up-to-date front-end code and plugins don’t require jquery-migrate.min.js. More often than not, keeping this - simply adds unnecessary load to your site. (for < WP 5.5)',
+			'desc' => 'Remove jQuery Migrate. Most up-to-date front-end code and plugins don’t require jquery-migrate.min.js. More often than not, keeping this - simply adds unnecessary load to your site.',
 		);
 
 		$of_options[] = array(
@@ -231,6 +231,21 @@ if ( ! function_exists( 'of_options' ) ) {
 			'desc' => 'Change the search field placeholder.',
 			'id'   => 'search_placeholder',
 			'type' => 'text',
+		);
+
+		$of_options[] = array(
+			'name'    => 'Search results latency',
+			'desc'    => 'Set the delay for live search results.',
+			'id'      => 'search_result_latency',
+			'std'     => '0',
+			'type'    => 'select',
+			'options' => array(
+					'0'    => 'Instant',
+					'500'  => '500 ms',
+					'1000' => '1000 ms',
+					'1500' => '1500 ms',
+					'2000' => '2000 ms',
+				),
 		);
 
 		if ( is_woocommerce_activated() ) {
@@ -370,6 +385,21 @@ if ( ! function_exists( 'of_options' ) ) {
 			);
 
 			$of_options[] = array(
+				'name' => 'Product variations',
+				'id'   => 'swatches',
+				'desc' => 'Enable variation swatches.',
+				'std'  => 0,
+				'type' => 'checkbox',
+			);
+
+			$of_options[] = array(
+				'id'   => 'additional_variation_images',
+				'desc' => 'Enable additional variation images (Flatsome gallery).',
+				'std'  => 0,
+				'type' => 'checkbox',
+			);
+
+			$of_options[] = array(
 				'name' => 'Disable Reviews Global',
 				'id'   => 'disable_reviews',
 				'desc' => 'Disable reviews globally.',
@@ -378,9 +408,9 @@ if ( ! function_exists( 'of_options' ) ) {
 			);
 
 			$of_options[] = array(
-				'name' => 'Enable default WooCommerce product gallery',
+				'name' => 'WooCommerce product gallery',
 				'id'   => 'product_gallery_woocommerce',
-				'desc' => 'Use the default WooCommerce gallery slider for plugin compatibility, such as "Additional Variation Images".',
+				'desc' => 'Use the default WooCommerce gallery slider for plugin compatibility. <br>(This disables the Flatsome product gallery and multiple options for it)',
 				'std'  => 0,
 				'type' => 'checkbox',
 			);
@@ -449,6 +479,14 @@ if ( ! function_exists( 'of_options' ) ) {
 				'name' => 'Disable prices',
 				'id'   => 'catalog_mode_prices',
 				'desc' => 'Select to disable prices on category pages and product page.',
+				'std'  => 0,
+				'type' => 'checkbox',
+			);
+
+			$of_options[] = array(
+				'name' => 'Remove sale badge',
+				'id'   => 'catalog_mode_sale_badge',
+				'desc' => 'Select to remove sale badges.',
 				'std'  => 0,
 				'type' => 'checkbox',
 			);
@@ -560,7 +598,6 @@ if ( ! function_exists( 'of_options' ) ) {
 			'type' => 'checkbox',
 		);
 
-
 		if ( function_exists( 'ubermenu' ) ) {
 			$of_options[] = array(
 				'name' => 'Ubermenu',
@@ -572,7 +609,7 @@ if ( ! function_exists( 'of_options' ) ) {
 		}
 
 		// Yoast options.
-		if ( class_exists( 'WPSEO_Frontend' ) ) {
+		if ( class_exists( 'WPSEO_Options' ) ) {
 			$of_options[] = array(
 				'name' => 'Yoast Primary Category',
 				'id'   => 'wpseo_primary_term',
@@ -635,6 +672,51 @@ if ( ! function_exists( 'of_options' ) ) {
 			);
 		}
 
+		// All in one SEO options.
+		if ( class_exists( 'AIOSEO\Plugin\AIOSEO' ) ) {
+			$of_options[] = array(
+				'name' => 'AIOSEO Breadcrumbs',
+				'id'   => 'aioseo_breadcrumb',
+				'desc' => 'Use on product category pages, single product pages and elements.',
+				'std'  => 0,
+				'type' => 'checkbox',
+			);
+		}
+
+		// SEOPress options.
+		if ( defined( 'SEOPRESS_VERSION' ) ) {
+			$of_options[] = array(
+				'name' => defined( 'SEOPRESS_PRO_VERSION' ) ? 'SEOPress Breadcrumbs' : 'SEOPress Breadcrumbs (Requires SeoPress PRO)',
+				'id'   => 'wpseopress_breadcrumb',
+				'desc' => 'Use on product category pages, single product pages and elements.',
+				'std'  => 0,
+				'type' => 'checkbox',
+			);
+		}
+
+		// Updates.
+		$of_options[] = array(
+			'name' => 'Updates',
+			'type' => 'heading',
+		);
+
+		$of_options[] = array(
+			'name'    => 'Release channel',
+			'id'      => 'release_channel',
+			'std'     => 'stable',
+			'type'    => 'select',
+			'options' => array(
+				'stable' => 'Stable',
+				'beta'   => 'Beta',
+			),
+		);
+
+		$of_options[] = array(
+			'name' => '',
+			'type' => 'warning',
+			'desc' => '<p style="font-size:14px">Use with caution. Do not use prerelease versions on production sites. Beta releases may not be stable.</p>',
+		);
+
 		// Backup Options.
 		$of_options[] = array(
 			'name' => 'Backup and Import',
@@ -646,7 +728,7 @@ if ( ! function_exists( 'of_options' ) ) {
 			'id'   => 'of_backup',
 			'std'  => '',
 			'type' => 'backup',
-			'desc' => 'You can use the two buttons below to backup your current options, and then restore it back at a later time. This is useful if you want to experiment on the options but would like to keep the old settings in case you need it back.',
+			'desc' => 'You can use the buttons above to backup your current options, and then restore it back at a later time. This is useful if you want to experiment on the options but would like to keep the old settings in case you need it back.',
 		);
 
 		$of_options[] = array(
