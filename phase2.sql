@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: localhost    Database: phase2
 -- ------------------------------------------------------
--- Server version	8.0.32-0ubuntu0.20.04.2
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -24,18 +24,18 @@ DROP TABLE IF EXISTS `db_actionscheduler_actions`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_actionscheduler_actions` (
   `action_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `hook` varchar(191) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `status` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `hook` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `scheduled_date_gmt` datetime DEFAULT '0000-00-00 00:00:00',
   `scheduled_date_local` datetime DEFAULT '0000-00-00 00:00:00',
-  `args` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `schedule` longtext COLLATE utf8mb4_unicode_520_ci,
+  `args` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `schedule` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
   `group_id` bigint unsigned NOT NULL DEFAULT '0',
   `attempts` int NOT NULL DEFAULT '0',
   `last_attempt_gmt` datetime DEFAULT '0000-00-00 00:00:00',
   `last_attempt_local` datetime DEFAULT '0000-00-00 00:00:00',
   `claim_id` bigint unsigned NOT NULL DEFAULT '0',
-  `extended_args` varchar(8000) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `extended_args` varchar(8000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   PRIMARY KEY (`action_id`),
   KEY `hook` (`hook`),
   KEY `status` (`status`),
@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS `db_actionscheduler_groups`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_actionscheduler_groups` (
   `group_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   PRIMARY KEY (`group_id`),
   KEY `slug` (`slug`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -116,7 +116,7 @@ DROP TABLE IF EXISTS `db_actionscheduler_logs`;
 CREATE TABLE `db_actionscheduler_logs` (
   `log_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `action_id` bigint unsigned NOT NULL,
-  `message` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `log_date_gmt` datetime DEFAULT '0000-00-00 00:00:00',
   `log_date_local` datetime DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`log_id`),
@@ -145,8 +145,8 @@ DROP TABLE IF EXISTS `db_commentmeta`;
 CREATE TABLE `db_commentmeta` (
   `meta_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `comment_id` bigint unsigned NOT NULL DEFAULT '0',
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
   PRIMARY KEY (`meta_id`),
   KEY `comment_id` (`comment_id`),
   KEY `meta_key` (`meta_key`(191))
@@ -172,17 +172,17 @@ DROP TABLE IF EXISTS `db_comments`;
 CREATE TABLE `db_comments` (
   `comment_ID` bigint unsigned NOT NULL AUTO_INCREMENT,
   `comment_post_ID` bigint unsigned NOT NULL DEFAULT '0',
-  `comment_author` tinytext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `comment_author_email` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_author_url` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_author_IP` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `comment_author` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `comment_author_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `comment_author_url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `comment_author_IP` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `comment_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `comment_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `comment_content` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `comment_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `comment_karma` int NOT NULL DEFAULT '0',
-  `comment_approved` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '1',
-  `comment_agent` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'comment',
+  `comment_approved` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '1',
+  `comment_agent` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `comment_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'comment',
   `comment_parent` bigint unsigned NOT NULL DEFAULT '0',
   `user_id` bigint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`comment_ID`),
@@ -214,18 +214,18 @@ DROP TABLE IF EXISTS `db_links`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_links` (
   `link_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `link_url` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_image` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_target` varchar(25) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_description` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_visible` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'Y',
+  `link_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_target` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_visible` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'Y',
   `link_owner` bigint unsigned NOT NULL DEFAULT '1',
   `link_rating` int NOT NULL DEFAULT '0',
   `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `link_rel` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_notes` mediumtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `link_rss` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_rel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_notes` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `link_rss` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`link_id`),
   KEY `link_visible` (`link_visible`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -249,9 +249,9 @@ DROP TABLE IF EXISTS `db_options`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_options` (
   `option_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `option_name` varchar(191) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `option_value` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `autoload` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'yes',
+  `option_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `option_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `autoload` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`),
   KEY `autoload` (`autoload`)
@@ -278,8 +278,8 @@ DROP TABLE IF EXISTS `db_postmeta`;
 CREATE TABLE `db_postmeta` (
   `meta_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `post_id` bigint unsigned NOT NULL DEFAULT '0',
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`(191))
@@ -308,24 +308,24 @@ CREATE TABLE `db_posts` (
   `post_author` bigint unsigned NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `post_content` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `post_title` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `post_excerpt` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `post_status` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'publish',
-  `comment_status` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'open',
-  `ping_status` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'open',
-  `post_password` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `post_name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `to_ping` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `pinged` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'publish',
+  `comment_status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'open',
+  `ping_status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'open',
+  `post_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `post_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `to_ping` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `pinged` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `post_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `post_content_filtered` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_content_filtered` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `post_parent` bigint unsigned NOT NULL DEFAULT '0',
-  `guid` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `guid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `menu_order` int NOT NULL DEFAULT '0',
-  `post_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'post',
-  `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `post_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'post',
+  `post_mime_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `comment_count` bigint NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
   KEY `post_name` (`post_name`(191)),
@@ -355,8 +355,8 @@ DROP TABLE IF EXISTS `db_social_users`;
 CREATE TABLE `db_social_users` (
   `social_users_id` int NOT NULL AUTO_INCREMENT,
   `ID` int NOT NULL,
-  `type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `identifier` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `identifier` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `register_date` datetime DEFAULT NULL,
   `login_date` datetime DEFAULT NULL,
   `link_date` datetime DEFAULT NULL,
@@ -411,8 +411,8 @@ DROP TABLE IF EXISTS `db_term_taxonomy`;
 CREATE TABLE `db_term_taxonomy` (
   `term_taxonomy_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `term_id` bigint unsigned NOT NULL DEFAULT '0',
-  `taxonomy` varchar(32) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `description` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `taxonomy` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `parent` bigint unsigned NOT NULL DEFAULT '0',
   `count` bigint NOT NULL DEFAULT '0',
   PRIMARY KEY (`term_taxonomy_id`),
@@ -441,8 +441,8 @@ DROP TABLE IF EXISTS `db_termmeta`;
 CREATE TABLE `db_termmeta` (
   `meta_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `term_id` bigint unsigned NOT NULL DEFAULT '0',
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
   PRIMARY KEY (`meta_id`),
   KEY `term_id` (`term_id`),
   KEY `meta_key` (`meta_key`(191))
@@ -468,8 +468,8 @@ DROP TABLE IF EXISTS `db_terms`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_terms` (
   `term_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `slug` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `slug` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `term_group` bigint NOT NULL DEFAULT '0',
   PRIMARY KEY (`term_id`),
   KEY `slug` (`slug`(191)),
@@ -497,8 +497,8 @@ DROP TABLE IF EXISTS `db_usermeta`;
 CREATE TABLE `db_usermeta` (
   `umeta_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint unsigned NOT NULL DEFAULT '0',
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
   PRIMARY KEY (`umeta_id`),
   KEY `user_id` (`user_id`),
   KEY `meta_key` (`meta_key`(191))
@@ -524,15 +524,15 @@ DROP TABLE IF EXISTS `db_users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_users` (
   `ID` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_login` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_pass` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_nicename` varchar(50) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_email` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_url` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_login` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_nicename` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_registered` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `user_activation_key` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_activation_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_status` int NOT NULL DEFAULT '0',
-  `display_name` varchar(250) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `display_name` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`ID`),
   KEY `user_login_key` (`user_login`),
   KEY `user_nicename` (`user_nicename`),
@@ -546,7 +546,7 @@ CREATE TABLE `db_users` (
 
 LOCK TABLES `db_users` WRITE;
 /*!40000 ALTER TABLE `db_users` DISABLE KEYS */;
-INSERT INTO `db_users` VALUES (1,'admin','$P$BwBH4YXN3qYTxu3.ADCmu7Tq2P1ZWk.','admin','donpv.btc@gmail.com','http://35.194.220.105:9200','2023-03-09 14:27:37','',0,'admin');
+INSERT INTO `db_users` VALUES (1,'admin','$P$BpxMBHXPgCoHQJAW21jsoq5km5DWp1/','admin','phamvanhieu300198@gmail.com','http://35.194.220.105:9200','2023-03-09 14:27:37','',0,'admin');
 /*!40000 ALTER TABLE `db_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -560,13 +560,13 @@ DROP TABLE IF EXISTS `db_wc_admin_note_actions`;
 CREATE TABLE `db_wc_admin_note_actions` (
   `action_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `note_id` bigint unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `label` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `query` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `actioned_text` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `nonce_action` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `nonce_name` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `query` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `actioned_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `nonce_action` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `nonce_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   PRIMARY KEY (`action_id`),
   KEY `note_id` (`note_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -591,22 +591,22 @@ DROP TABLE IF EXISTS `db_wc_admin_notes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_wc_admin_notes` (
   `note_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `locale` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `title` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `content_data` longtext COLLATE utf8mb4_unicode_520_ci,
-  `status` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `source` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `locale` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `title` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `content_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
+  `status` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `source` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_reminder` datetime DEFAULT NULL,
   `is_snoozable` tinyint(1) NOT NULL DEFAULT '0',
-  `layout` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `image` varchar(200) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `layout` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `image` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `is_read` tinyint(1) NOT NULL DEFAULT '0',
-  `icon` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'info',
+  `icon` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'info',
   PRIMARY KEY (`note_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -655,16 +655,16 @@ DROP TABLE IF EXISTS `db_wc_customer_lookup`;
 CREATE TABLE `db_wc_customer_lookup` (
   `customer_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint unsigned DEFAULT NULL,
-  `username` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `username` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `date_last_active` timestamp NULL DEFAULT NULL,
   `date_registered` timestamp NULL DEFAULT NULL,
-  `country` char(2) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `postcode` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `city` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `state` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `country` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `postcode` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `city` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `state` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`customer_id`),
   UNIQUE KEY `user_id` (`user_id`),
   KEY `email` (`email`)
@@ -692,7 +692,7 @@ CREATE TABLE `db_wc_download_log` (
   `timestamp` datetime NOT NULL,
   `permission_id` bigint unsigned NOT NULL,
   `user_id` bigint unsigned DEFAULT NULL,
-  `user_ip_address` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT '',
+  `user_ip_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT '',
   PRIMARY KEY (`download_log_id`),
   KEY `permission_id` (`permission_id`),
   KEY `timestamp` (`timestamp`)
@@ -791,7 +791,7 @@ CREATE TABLE `db_wc_order_stats` (
   `shipping_total` double NOT NULL DEFAULT '0',
   `net_total` double NOT NULL DEFAULT '0',
   `returning_customer` tinyint(1) DEFAULT NULL,
-  `status` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `status` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `customer_id` bigint unsigned NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `date_created` (`date_created`),
@@ -848,7 +848,7 @@ DROP TABLE IF EXISTS `db_wc_product_attributes_lookup`;
 CREATE TABLE `db_wc_product_attributes_lookup` (
   `product_id` bigint NOT NULL,
   `product_or_parent_id` bigint NOT NULL,
-  `taxonomy` varchar(32) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `taxonomy` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `term_id` bigint NOT NULL,
   `is_variation_attribute` tinyint(1) NOT NULL,
   `in_stock` tinyint(1) NOT NULL,
@@ -875,7 +875,7 @@ DROP TABLE IF EXISTS `db_wc_product_download_directories`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_wc_product_download_directories` (
   `url_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `url` varchar(256) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `url` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`url_id`),
   KEY `url` (`url`(191))
@@ -901,19 +901,19 @@ DROP TABLE IF EXISTS `db_wc_product_meta_lookup`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_wc_product_meta_lookup` (
   `product_id` bigint NOT NULL,
-  `sku` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT '',
+  `sku` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT '',
   `virtual` tinyint(1) DEFAULT '0',
   `downloadable` tinyint(1) DEFAULT '0',
   `min_price` decimal(19,4) DEFAULT NULL,
   `max_price` decimal(19,4) DEFAULT NULL,
   `onsale` tinyint(1) DEFAULT '0',
   `stock_quantity` double DEFAULT NULL,
-  `stock_status` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT 'instock',
+  `stock_status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT 'instock',
   `rating_count` bigint DEFAULT '0',
   `average_rating` decimal(3,2) DEFAULT '0.00',
   `total_sales` bigint DEFAULT '0',
-  `tax_status` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT 'taxable',
-  `tax_class` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT '',
+  `tax_status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT 'taxable',
+  `tax_class` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT '',
   PRIMARY KEY (`product_id`),
   KEY `virtual` (`virtual`),
   KEY `downloadable` (`downloadable`),
@@ -942,7 +942,7 @@ DROP TABLE IF EXISTS `db_wc_rate_limits`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_wc_rate_limits` (
   `rate_limit_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `rate_limit_key` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `rate_limit_key` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `rate_limit_expiry` bigint unsigned NOT NULL,
   `rate_limit_remaining` smallint NOT NULL DEFAULT '0',
   PRIMARY KEY (`rate_limit_id`),
@@ -994,8 +994,8 @@ DROP TABLE IF EXISTS `db_wc_tax_rate_classes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_wc_tax_rate_classes` (
   `tax_rate_class_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `slug` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `slug` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`tax_rate_class_id`),
   UNIQUE KEY `slug` (`slug`(191))
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -1020,12 +1020,12 @@ DROP TABLE IF EXISTS `db_wc_webhooks`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_wc_webhooks` (
   `webhook_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `status` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `status` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `user_id` bigint unsigned NOT NULL,
-  `delivery_url` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `secret` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `topic` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `delivery_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `secret` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `topic` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_created_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -1057,12 +1057,12 @@ DROP TABLE IF EXISTS `db_woocommerce_api_keys`;
 CREATE TABLE `db_woocommerce_api_keys` (
   `key_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint unsigned NOT NULL,
-  `description` varchar(200) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `permissions` varchar(10) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `consumer_key` char(64) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `consumer_secret` char(43) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `nonces` longtext COLLATE utf8mb4_unicode_520_ci,
-  `truncated_key` char(7) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `permissions` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `consumer_key` char(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `consumer_secret` char(43) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `nonces` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
+  `truncated_key` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `last_access` datetime DEFAULT NULL,
   PRIMARY KEY (`key_id`),
   KEY `consumer_key` (`consumer_key`),
@@ -1088,10 +1088,10 @@ DROP TABLE IF EXISTS `db_woocommerce_attribute_taxonomies`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_woocommerce_attribute_taxonomies` (
   `attribute_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `attribute_name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `attribute_label` varchar(200) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `attribute_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `attribute_orderby` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `attribute_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `attribute_label` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `attribute_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `attribute_orderby` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `attribute_public` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`attribute_id`),
   KEY `attribute_name` (`attribute_name`(20))
@@ -1116,13 +1116,13 @@ DROP TABLE IF EXISTS `db_woocommerce_downloadable_product_permissions`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_woocommerce_downloadable_product_permissions` (
   `permission_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `download_id` varchar(36) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `download_id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `product_id` bigint unsigned NOT NULL,
   `order_id` bigint unsigned NOT NULL DEFAULT '0',
-  `order_key` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `user_email` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `order_key` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `user_email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `user_id` bigint unsigned DEFAULT NULL,
-  `downloads_remaining` varchar(9) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `downloads_remaining` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `access_granted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `access_expires` datetime DEFAULT NULL,
   `download_count` bigint unsigned NOT NULL DEFAULT '0',
@@ -1154,9 +1154,9 @@ CREATE TABLE `db_woocommerce_log` (
   `log_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `timestamp` datetime NOT NULL,
   `level` smallint NOT NULL,
-  `source` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `message` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `context` longtext COLLATE utf8mb4_unicode_520_ci,
+  `source` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `context` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
   PRIMARY KEY (`log_id`),
   KEY `level` (`level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -1181,8 +1181,8 @@ DROP TABLE IF EXISTS `db_woocommerce_order_itemmeta`;
 CREATE TABLE `db_woocommerce_order_itemmeta` (
   `meta_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `order_item_id` bigint unsigned NOT NULL,
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
   PRIMARY KEY (`meta_id`),
   KEY `order_item_id` (`order_item_id`),
   KEY `meta_key` (`meta_key`(32))
@@ -1207,8 +1207,8 @@ DROP TABLE IF EXISTS `db_woocommerce_order_items`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_woocommerce_order_items` (
   `order_item_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `order_item_name` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `order_item_type` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `order_item_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `order_item_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `order_id` bigint unsigned NOT NULL,
   PRIMARY KEY (`order_item_id`),
   KEY `order_id` (`order_id`)
@@ -1234,8 +1234,8 @@ DROP TABLE IF EXISTS `db_woocommerce_payment_tokenmeta`;
 CREATE TABLE `db_woocommerce_payment_tokenmeta` (
   `meta_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `payment_token_id` bigint unsigned NOT NULL,
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci,
   PRIMARY KEY (`meta_id`),
   KEY `payment_token_id` (`payment_token_id`),
   KEY `meta_key` (`meta_key`(32))
@@ -1260,10 +1260,10 @@ DROP TABLE IF EXISTS `db_woocommerce_payment_tokens`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_woocommerce_payment_tokens` (
   `token_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `gateway_id` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `token` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `gateway_id` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `token` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `user_id` bigint unsigned NOT NULL DEFAULT '0',
-  `type` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `is_default` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`token_id`),
   KEY `user_id` (`user_id`)
@@ -1288,8 +1288,8 @@ DROP TABLE IF EXISTS `db_woocommerce_sessions`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_woocommerce_sessions` (
   `session_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `session_key` char(32) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `session_value` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `session_key` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `session_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `session_expiry` bigint unsigned NOT NULL,
   PRIMARY KEY (`session_id`),
   UNIQUE KEY `session_key` (`session_key`)
@@ -1315,8 +1315,8 @@ DROP TABLE IF EXISTS `db_woocommerce_shipping_zone_locations`;
 CREATE TABLE `db_woocommerce_shipping_zone_locations` (
   `location_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `zone_id` bigint unsigned NOT NULL,
-  `location_code` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `location_type` varchar(40) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `location_code` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `location_type` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   PRIMARY KEY (`location_id`),
   KEY `location_id` (`location_id`),
   KEY `location_type_code` (`location_type`(10),`location_code`(20))
@@ -1342,7 +1342,7 @@ DROP TABLE IF EXISTS `db_woocommerce_shipping_zone_methods`;
 CREATE TABLE `db_woocommerce_shipping_zone_methods` (
   `zone_id` bigint unsigned NOT NULL,
   `instance_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `method_id` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `method_id` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `method_order` bigint unsigned NOT NULL,
   `is_enabled` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`instance_id`)
@@ -1367,7 +1367,7 @@ DROP TABLE IF EXISTS `db_woocommerce_shipping_zones`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_woocommerce_shipping_zones` (
   `zone_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `zone_name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `zone_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `zone_order` bigint unsigned NOT NULL,
   PRIMARY KEY (`zone_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -1391,9 +1391,9 @@ DROP TABLE IF EXISTS `db_woocommerce_tax_rate_locations`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_woocommerce_tax_rate_locations` (
   `location_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `location_code` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `location_code` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `tax_rate_id` bigint unsigned NOT NULL,
-  `location_type` varchar(40) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `location_type` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   PRIMARY KEY (`location_id`),
   KEY `tax_rate_id` (`tax_rate_id`),
   KEY `location_type_code` (`location_type`(10),`location_code`(20))
@@ -1418,15 +1418,15 @@ DROP TABLE IF EXISTS `db_woocommerce_tax_rates`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db_woocommerce_tax_rates` (
   `tax_rate_id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `tax_rate_country` varchar(2) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `tax_rate_state` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `tax_rate` varchar(8) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `tax_rate_name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `tax_rate_country` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `tax_rate_state` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `tax_rate` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `tax_rate_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `tax_rate_priority` bigint unsigned NOT NULL,
   `tax_rate_compound` int NOT NULL DEFAULT '0',
   `tax_rate_shipping` int NOT NULL DEFAULT '1',
   `tax_rate_order` bigint unsigned NOT NULL,
-  `tax_rate_class` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `tax_rate_class` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`tax_rate_id`),
   KEY `tax_rate_country` (`tax_rate_country`),
   KEY `tax_rate_state` (`tax_rate_state`(2)),
@@ -1453,4 +1453,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-13 14:31:45
+-- Dump completed on 2023-03-13 21:40:07
