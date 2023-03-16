@@ -78,28 +78,28 @@ SET url = REPLACE(url, 'localhost/wp', '35.194.220.105:9200');
 
 
 UPDATE phase2.db_posts
-SET guid = REPLACE(guid, 'localhost', '35.194.220.105:9200');
+SET guid = REPLACE(guid, 'localhost/wp', '35.194.220.105:9200');
 
 UPDATE phase2.db_posts
-SET post_content = REPLACE(post_content, 'localhost', '35.194.220.105:9200');
+SET post_content = REPLACE(post_content, 'localhost/wp', '35.194.220.105:9200');
 
 UPDATE phase2.db_users
-SET user_url = REPLACE(user_url, 'localhost', '35.194.220.105:9200');
+SET user_url = REPLACE(user_url, 'localhost/wp', '35.194.220.105:9200');
 
 UPDATE phase2.db_comments
-SET comment_author_url = REPLACE(comment_author_url, 'localhost', '35.194.220.105:9200');
+SET comment_author_url = REPLACE(comment_author_url, 'localhost/wp', '35.194.220.105:9200');
 
 UPDATE phase2.db_options
-SET option_value = REPLACE(option_value, 'localhost', '35.194.220.105:9200');
+SET option_value = REPLACE(option_value, 'localhost/wp', '35.194.220.105:9200');
 
 UPDATE phase2.db_postmeta
-SET meta_value = REPLACE(meta_value, 'localhost', '35.194.220.105:9200');
+SET meta_value = REPLACE(meta_value, 'localhost/wp', '35.194.220.105:9200');
 
 UPDATE phase2.db_wc_admin_note_actions
-SET query = REPLACE(query, 'localhost', '35.194.220.105:9200');
+SET query = REPLACE(query, 'localhost/wp', '35.194.220.105:9200');
 
 UPDATE phase2.db_wc_product_download_directories
-SET url = REPLACE(url, 'localhost', '35.194.220.105:9200');
+SET url = REPLACE(url, 'localhost/wp', '35.194.220.105:9200');
 
 
 
@@ -127,3 +127,58 @@ SET query = REPLACE(query, '35.194.220.105:9200', 'localhost/wp');
 
 UPDATE phase2.db_wc_product_download_directories
 SET url = REPLACE(url, '35.194.220.105:9200', 'localhost/wp');
+
+
+
+UPDATE phase2.db_posts
+SET guid = REPLACE(guid, 'tanson-law.com', 'localhost/wp');
+
+UPDATE phase2.db_posts
+SET post_content = REPLACE(post_content, 'tanson-law.com', 'localhost/wp');
+
+UPDATE phase2.db_users
+SET user_url = REPLACE(user_url, 'tanson-law.com', 'localhost/wp');
+
+UPDATE phase2.db_comments
+SET comment_author_url = REPLACE(comment_author_url, 'tanson-law.com', 'localhost/wp');
+
+UPDATE phase2.db_options
+SET option_value = REPLACE(option_value, 'tanson-law.com', 'localhost/wp');
+
+UPDATE phase2.db_postmeta
+SET meta_value = REPLACE(meta_value, 'tanson-law.com', 'localhost/wp');
+
+UPDATE phase2.db_wc_admin_note_actions
+SET query = REPLACE(query, 'tanson-law.com', 'localhost/wp');
+
+UPDATE phase2.db_wc_product_download_directories
+SET url = REPLACE(url, 'tanson-law.com', 'localhost/wp');
+
+
+
+
+UPDATE phase2.db_posts
+SET guid = REPLACE(guid, 'tanson-law.com', '35.194.220.105:9200');
+
+UPDATE phase2.db_posts
+SET post_content = REPLACE(post_content, 'tanson-law.com', '35.194.220.105:9200');
+
+UPDATE phase2.db_users
+SET user_url = REPLACE(user_url, 'tanson-law.com', '35.194.220.105:9200');
+
+UPDATE phase2.db_comments
+SET comment_author_url = REPLACE(comment_author_url, 'tanson-law.com', '35.194.220.105:9200');
+
+UPDATE phase2.db_options
+SET option_value = REPLACE(option_value, 'tanson-law.com', '35.194.220.105:9200');
+
+UPDATE phase2.db_postmeta
+SET meta_value = REPLACE(meta_value, 'tanson-law.com', '35.194.220.105:9200');
+
+UPDATE phase2.db_wc_admin_note_actions
+SET query = REPLACE(query, 'tanson-law.com', '35.194.220.105:9200');
+
+UPDATE phase2.db_wc_product_download_directories
+SET url = REPLACE(url, 'tanson-law.com', '35.194.220.105:9200');
+
+
