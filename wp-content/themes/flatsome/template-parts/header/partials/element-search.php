@@ -8,7 +8,7 @@
 
 $icon_style = get_theme_mod('search_icon_style');
 ?>
-<?php if(get_theme_mod('header_search_style') !== 'lightbox') { ?>
+<?php if(get_theme_mod('header_search_style') == 'lightbox_display_none') { ?>
 <li class="header-search header-search-dropdown has-icon has-dropdown menu-item-has-children">
 	<?php if($icon_style) { ?><div class="header-button"><?php } ?>
 	<a href="#" aria-label="<?php echo __('Search','woocommerce'); ?>" class="<?php echo get_flatsome_icon_class(flatsome_option('search_icon_style'), 'small'); ?>"><?php echo get_flatsome_icon('icon-search'); ?></a>
@@ -17,7 +17,7 @@ $icon_style = get_theme_mod('search_icon_style');
 	 	<?php get_template_part('template-parts/header/partials/element-search-form'); ?>
 	</ul>
 </li>
-<?php } else if(get_theme_mod('header_search_style') == 'lightbox') { ?>
+<?php } else if(get_theme_mod('header_search_style') == 'lightbox_display_none') { ?>
 <li class="header-search header-search-lightbox has-icon">
 	<?php if($icon_style) { ?><div class="header-button"><?php } ?>
 		<a href="#search-lightbox" aria-label="<?php echo __('Search','woocommerce'); ?>" data-open="#search-lightbox" data-focus="input.search-field"

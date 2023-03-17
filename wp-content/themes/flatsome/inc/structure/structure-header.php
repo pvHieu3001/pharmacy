@@ -1108,7 +1108,7 @@ function flatsome_add_header_backgrounds() {
 	echo '<div class="header-bg-image fill"></div>';
 
 	// Add BG Color.
-	echo '<div class="header-bg-color fill"></div>';
+	echo '<div class="header-bg-color fill" style="border-radius:0 0 40px 40px"></div>';
 
 	// Add BG shade to transparent headers.
 	if ( ! empty( $page_template ) && strpos( $page_template, 'transparent' ) && get_theme_mod( 'header_bg_transparent_shade' ) ) {
