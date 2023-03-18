@@ -14,7 +14,19 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
+	<style>
+		.nav>li>a{
+			color: #682772 !important;
+			text-align: center;
+    		text-transform: uppercase !important;
+			line-height: 24px;
+			font-weight: 700 !important;
+    		font-style: normal !important;
+			font-family: "Roboto", sans-serif !important;
+			font-size: 1em !important;
+			margin: 0 13px;
+		}
+	</style>
 	<?php wp_head(); ?>
 </head>
 
@@ -29,7 +41,7 @@
 
 	<?php do_action( 'flatsome_before_header' ); ?>
 
-	<header style="width:50%; margin-left:25%; border-radius:0 0 40px 40px;" id="header" class="header <?php flatsome_header_classes(); ?>">
+	<header style="width:60%; margin-left:20%; border-radius:0 0 40px 40px;" id="header" class="header <?php flatsome_header_classes(); ?>">
 		<div class="header-wrapper">
 			<?php get_template_part( 'template-parts/header/header', 'wrapper' ); ?>
 		</div>

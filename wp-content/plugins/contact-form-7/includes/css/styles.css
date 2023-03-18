@@ -46,6 +46,31 @@
 	position: relative;
 }
 
+form>p>label>span>input{
+	border: 1px solid #73036C !important;
+    border-radius: 5px !important;
+}
+
+form>p>label>span>textarea{
+	border: 1px solid #73036C !important;
+    border-radius: 5px !important;
+}
+
+form>p>label{
+	color: #73036C !important;
+}
+
+form>p>input[type=submit]{
+	background: #73036C !important;
+	margin-left: 0 auto;
+	border-radius: 20px !important;
+}
+
+form>h2{
+	color: #73036C !important;
+	text-align: center;
+}
+
 .wpcf7-not-valid-tip {
 	color: #dc3232; /* Red */
 	font-size: 1em;
