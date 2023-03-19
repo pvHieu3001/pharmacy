@@ -41,7 +41,7 @@
 
 	<?php do_action( 'flatsome_before_header' ); ?>
 
-	<header style="width:60%; margin-left:20%; border-radius:0 0 40px 40px;" id="header" class="header <?php flatsome_header_classes(); ?>">
+	<header style="width:70%; margin-left:15%; border-radius:0 0 40px 40px;" id="header" class="header <?php flatsome_header_classes(); ?>">
 		<div class="header-wrapper">
 			<?php get_template_part( 'template-parts/header/header', 'wrapper' ); ?>
 		</div>
