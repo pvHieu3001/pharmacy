@@ -18,3 +18,31 @@ License URI:          https://themeforest.net/licenses
 All custom CSS should be added to Flatsome > Advanced > Custom CSS,
 or in the style.css of a Child Theme.
 ***************/
+.option_service{
+	position: fixed;
+	bottom: 30%;
+	right: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	cursor: pointer;
+}
+.option_service>.col{
+	width: 90px;
+	height: 90px;
+	border-bottom: 1px dashed #fff;
+}
+.banner_spin{
+	animation-name: spin;
+	animation-duration: 2000ms;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+.btn_read_more{
+	background: #73036C !important;;
+}
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
